@@ -14,7 +14,7 @@ struct StrokeModifier: ViewModifier {
         content
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .stroke(.linearGradient(colors: [.white.opacity(colorScheme == .dark ? 0.7 :  0.3 ), .black.opacity(colorScheme == .dark ? 0.3 : 0.1)], startPoint: .top, endPoint: .bottom))
+                    .stroke(.linearGradient(colors: [.black, .black], startPoint: .top, endPoint: .bottom))
                     .blendMode(.overlay)
             )
         

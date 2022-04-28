@@ -11,48 +11,63 @@ struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
     var body: some View {
+        
         VStack{
-            Image("logo")
-                .resizable()
-                .frame(width: 55, height: 55)
-            Text("EventHub")
-                .font(.largeTitle)
-                .foregroundColor(.black.opacity(0.7))
-                .fontWeight(.semibold)
-            
-            Text("Sign In")
-                .font(.title)
-                .foregroundColor(.black.opacity(0.8))
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .leading)
             
             CustomField(text: $email, icon: "envelope", placeholder: "abc@email.com")
                 .padding(.vertical)
-            CustomField(text: $password, icon: "key", isSecure: true, placeholder: "Password")
+            CustomField(text: $password, icon: "lock", isSecure: true, placeholder: "Password")
             
             HStack{
-//
-//                Toggle("", isOn: .constant(false))
-//
-//                    .frame(width: 60,  alignment: .leading)
-//                    .padding(0)
-//
-//
-//                Text("Remember me?")
                 Spacer()
-                Button{
-                    
-                }label: {
+                NavigationLink(destination: ResetPassword()) {
                     Text("Forgot password?")
                         .foregroundColor(.black)
                 }
+                
             }
             .padding(.vertical)
-        
+            
+            
+            Button{
+                
+            }label: {
+                AuthMainButton(text: "SIGN IN")
+                    .padding()
+            }
+            
+            Text("OR")
+                .foregroundColor(.black.opacity(0.5))
+                .fontWeight(.bold)
+                .font(.title3)
+            
+            VStack(spacing: 20){
+                SignWithMedia(text: "Login with Google", image: "Google")
+                
+                SignWithMedia(text: "Login with Facebook", image: "Facebook")
+                
+            }
+            .padding()
+            
+            HStack{
+                Text("Don’t have an account?")
+                    .fontWeight(.regular)
+                NavigationLink(destination: SignUpView()) {
+                    Text("Sign up")
+                        .foregroundColor(Color("AccentColor"))
+                        .fontWeight(.regular)
+                }
+            }
+            
+            
         }
-        .padding(.horizontal, 20)
+        
         .frame(maxHeight: .infinity, alignment: .top)
+        .navigationBarTitle("Sign In")
+        .padding()
     }
+    
+    
 }
 
 struct SignInView_Previews: PreviewProvider {

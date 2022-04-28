@@ -10,10 +10,11 @@ import CoreData
 
 struct ContentView: View {
 
-
     var body: some View {
+        
         NavigationView {
             SignInView()
+                
         }
     }
 
@@ -23,6 +24,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

@@ -45,6 +45,7 @@ struct CustomField: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .stroke(.black.opacity(0.3), lineWidth: 1)
         )
+
     }
 }
 
