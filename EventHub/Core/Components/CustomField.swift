@@ -21,10 +21,10 @@ struct CustomField: View {
                 .font(.title3)
             if isShowSecureField && isSecure {
                 SecureField(placeholder, text: $text)
-                    .foregroundColor(.black.opacity(0.4))
+                    
             }else{
                 TextField(placeholder, text: $text)
-                    .foregroundColor(.black.opacity(0.4))
+                    
             }
         
             if isSecure{
