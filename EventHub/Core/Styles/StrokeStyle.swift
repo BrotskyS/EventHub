@@ -21,8 +21,22 @@ struct StrokeModifier: ViewModifier {
     }
 }
 
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
 extension View{
     func strokeStyle(cornerRadius: CGFloat = 30.0) -> some View {
         modifier(StrokeModifier(cornerRadius: cornerRadius))
     }
+    func cornerRadiusCustom(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+          clipShape( RoundedCorner(radius: radius, corners: corners) )
+      }
 }

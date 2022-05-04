@@ -6,16 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 class AuthModel: ObservableObject{
-    @Published var fullName: String = ""
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var confirmPassword: String = ""
+    @Published var userSesion: Firebase.User?
+    @Published var isError = ""
+    
+    init(){
+        self.userSesion = Auth.auth().currentUser
+    }
+
     
     
     func signIn(){
-        
+//        Auth.auth().signIn(withEmail: email, password: password){(result, error) in
+//            if error != nil{
+//                print("DEBUG:\(error.localizedDescription)")
+//            }else{
+//                print("Success")
+//            }
+//        }
     }
     
     func SignUp(){

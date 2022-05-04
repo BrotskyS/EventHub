@@ -10,6 +10,7 @@ import SwiftUI
 struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         
         VStack{
@@ -17,6 +18,9 @@ struct SignInView: View {
             CustomField(text: $email, icon: "envelope", placeholder: "abc@email.com")
                 .padding(.vertical)
             CustomField(text: $password, icon: "lock", isSecure: true, placeholder: "Password")
+            
+            
+        
             
             HStack{
                 Spacer()
@@ -29,8 +33,23 @@ struct SignInView: View {
             .padding(.vertical)
             
             
+            if viewModel.isError{
+                HStack{
+                    Image(systemName: "xmark.circle")
+                        .font(.title3)
+                    Text(viewModel.errorMessage)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+                    .foregroundColor(.red.opacity(0.7))
+                    .padding()
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 15))
+                    
+                     
+            }
+            
             Button{
-                
+                viewModel.login(withEmail: email, password: password)
             }label: {
                 AuthMainButton(text: "SIGN IN")
                     .padding()
@@ -42,9 +61,12 @@ struct SignInView: View {
                 .font(.title3)
             
             VStack(spacing: 20){
-                SignWithMedia(text: "Login with Google", image: "Google")
+                Button{
+                    viewModel.googleSignIn()
+                }label: {
+                    SignWithMedia(text: "Login with Google", image: "Google")
+                }
                 
-                SignWithMedia(text: "Login with Facebook", image: "Facebook")
                 
             }
             .padding()
@@ -73,5 +95,6 @@ struct SignInView: View {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
+            .environmentObject(AuthViewModel())
     }
 }

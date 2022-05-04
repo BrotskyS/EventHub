@@ -9,13 +9,25 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
+    @EnvironmentObject var viewModel: AuthViewModel
+ 
     var body: some View {
         
-        NavigationView {
-            SignInView()
+        Group{
+            if viewModel.userSesion == nil {
+                SignInView()
+            }else{
+                    HomeView()
                 
+            }
+            
         }
+        .onAppear{
+            print("viewModel.userSesion\(String(describing: viewModel))")
+        }
+         
+                
+
     }
 
   
@@ -25,5 +37,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AuthViewModel())
     }
 }

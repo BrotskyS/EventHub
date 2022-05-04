@@ -17,7 +17,8 @@ struct SignWithMedia: View {
                 .frame(width: 26, height: 26)
             Text(text)
                 .font(.title2)
-                .fontWeight(.thin)
+//                .fontWeight(.thin)
+                .foregroundColor(.black)
         }
         .frame(height: 60)
         .frame(maxWidth: .infinity)
