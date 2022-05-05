@@ -17,7 +17,6 @@ struct Init: View {
             .frame(width: .infinity, height: 300, alignment: .bottom)
             .background(.red)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea()
         }
     }
 }

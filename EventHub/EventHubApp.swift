@@ -11,6 +11,7 @@ import Firebase
 @main
 struct EventHubApp: App {
     @StateObject var viewModel = AuthViewModel()
+    @StateObject var firestore = FirestoreManager()
     init(){
         FirebaseApp.configure()
     }
@@ -21,6 +22,7 @@ struct EventHubApp: App {
                 ContentView()
             }
             .environmentObject(viewModel)
+            .environmentObject(firestore)
         }
     }
 }

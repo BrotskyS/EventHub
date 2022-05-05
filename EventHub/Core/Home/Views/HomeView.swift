@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var text = ""
+    @EnvironmentObject var firestoreModel: FirestoreManager
+    @ObservedObject var homeModel = HomeModel()
+    
+    
     var body: some View {
         VStack{
             VStack{
@@ -21,15 +24,45 @@ struct HomeView: View {
             .background(Color("AccentColor"))
             .foregroundColor(.white)
             .cornerRadiusCustom(40, corners: [.bottomLeft, .bottomRight])
-            .padding(.bottom, 50)
             .overlay(categories)
+        
+            Group{
+                HStack{
+                    Text("Upcoming Events")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Spacer()
+                    Text("See all")
+                        .foregroundColor(.black.opacity(0.5))
+                    Image(systemName: "arrowtriangle.forward.fill")
+                        .foregroundColor(.black.opacity(0.5))
+                }
+                .padding()
+                ScrollView(.horizontal){
+                    HStack(spacing: 15){
+                        ForEach(firestoreModel.upcomingEvents){ item in
+                            NavigationLink {
+                                EventDetailView(event: item)
+                            } label: {
+                                EventItemView(event: item)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+
+                            
+                        }
+                    }
+                    .padding(.horizontal)
+                }
             
+            }
            
-            
-            
+          
         
             Spacer()
         }
+        
+        .background(Color("Background"))
+        .navigationBarHidden(true)
         .ignoresSafeArea()
     }
     var topHeder: some View{
@@ -64,9 +97,12 @@ struct HomeView: View {
             Divider()
                 .frame(width: 1, height: 30)
             
-            TextField("Search...", text: $text)
+            TextField("Search...", text: $homeModel.text)
                 .font(.title2)
-            
+             
+                .frame(height: 50)
+                .zIndex(1)
+            Spacer()
             HStack{
                 Image(systemName: "line.3.horizontal.decrease")
                     .font(.caption)
@@ -76,6 +112,13 @@ struct HomeView: View {
             }
             .padding(7)
             .background(.white.opacity(0.15), in: RoundedRectangle(cornerRadius: 20))
+            .onTapGesture {
+                homeModel.showSheet = true
+            }
+            .sheet(isPresented: $homeModel.showSheet) {
+                Text("Sheet modal")
+                    .foregroundColor(.black)
+            }
                 
         }
     }
@@ -96,16 +139,17 @@ struct HomeView: View {
                 }
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding(.horizontal)
-            .offset(y: 170)
 
         }
+        .offset(y: 90)
     }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(FirestoreManager())
     }
 }
