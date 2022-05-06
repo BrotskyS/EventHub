@@ -19,5 +19,5 @@ var categoriesList = [
     Categorie(image: "fork.knife", title: "Food", color: "#29D697"),
     Categorie(image: "fork.knife", title: "Sport", color: "#F0635A"),
     Categorie(image: "fork.knife", title: "Music", color: "#F59762"),
-    Categorie(image: "fork.knife", title: "Movies", color: "#F59762")
+    Categorie(image: "fork.knife", title: "Art", color: "#46CDFB")
 ]
