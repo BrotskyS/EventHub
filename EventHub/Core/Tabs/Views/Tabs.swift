@@ -11,26 +11,29 @@ struct Tabs: View {
     var body: some View {
         TabView{
             HomeView()
+                .environmentObject(FirestoreManager())
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-            HomeView()
+            Text("calendar")
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Events")
                 }
-            HomeView()
+            
+            Text("calendar")
                 .tabItem {
                     Image(systemName: "map")
                     Text("Map")
                 }
-            HomeView()
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Person")
                 }
         }
+        
     }
 }
 
