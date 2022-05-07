@@ -18,6 +18,8 @@ struct CreateNewEventDetail: View {
           latitudinalMeters: 750,
           longitudinalMeters: 750
       )
+    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         
         NavigationView {
@@ -25,7 +27,7 @@ struct CreateNewEventDetail: View {
                
                 
                 Section(header: Text("Event")){
-                    TextField("Username", text: $model.eventName)
+                    TextField("Name", text: $model.eventTitle)
                     ZStack(alignment: .topLeading){
                         TextEditor(text: $model.eventDescription)
                             .padding(.horizontal, -5)
@@ -65,17 +67,17 @@ struct CreateNewEventDetail: View {
                 Section(header: Text("Date")) {
                     DatePicker(
                         "Date",
-                        selection: $model.eventDate,
+                        selection: $model.date,
                         displayedComponents: [.date]
                     )
                     DatePicker(
                         "Start",
-                        selection: $model.eventDate,
+                        selection: $model.startTime,
                         displayedComponents: [.hourAndMinute]
                     )
                     DatePicker(
                         "End",
-                        selection: $model.eventDate,
+                        selection: $model.endTime,
                         displayedComponents: [.hourAndMinute]
                     )
                 }
@@ -108,7 +110,7 @@ struct CreateNewEventDetail: View {
             .toolbar(content: {
                 ToolbarItem{
                     Button{
-                        model.uploadImage(image: model.eventImage)
+                        model.uploadEvent()
                     } label: {
                         Text("Save")
                             .fontWeight(.bold)

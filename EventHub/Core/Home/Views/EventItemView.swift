@@ -12,7 +12,7 @@ struct EventItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
             ZStack(alignment: .top){
-                AsyncImage(url: URL(string: event.imageUrl)) { image in
+                AsyncImage(url: URL(string: event.image)) { image in
                     image.resizable()
                 } placeholder: {
                     ProgressView()
@@ -22,9 +22,9 @@ struct EventItemView: View {
                 
                 HStack(alignment: .top){
                     VStack{
-                        Text(event.eventStartTime.formatted(.dateTime.day()))
+                        Text(event.startTime.formatted(.dateTime.day()))
                             .fontWeight(.bold)
-                        Text(event.eventStartTime, format: .dateTime.month())
+                        Text(event.endTime, format: .dateTime.month())
                     }
                     .padding(10)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
@@ -44,7 +44,7 @@ struct EventItemView: View {
             
             HStack{
                 
-                Text("+ \(event.participants) goals")
+                Text("+ \(event.participants.count) goals")
                     .fontWeight(.semibold)
                     .font(.callout)
 
@@ -67,6 +67,21 @@ struct EventItemView: View {
 
 struct EventItemView_Previews: PreviewProvider {
     static var previews: some View {
-        EventItemView(event: EventItemModel(id: "123", imageUrl: "https://picsum.photos/218/131", title: "International Band Mu...", participants: 20, date: Date(), eventStartTime: Date(), eventEndTime: Date(), locationTitle: "36 Guild Street London, UK ", location: "36 Guild Street London, UK ", organizer: "Sergiy", description: "Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase"))
+        EventItemView(event: EventItemModel(
+            id: "123",
+            title: "test",
+            description: "asdasd",
+            image: "https://picsum.photos/218/131",
+            publicShare: true,
+            date: Date.now,
+            startTime: Date.now,
+            endTime: Date.now,
+            eventType: "Sport",
+            price: 200,
+            locationTitle: "Main street",
+            locatioin: "asdasd",
+            organizer: UserInfo(id: "", name: "", email: "", city: "", following: [UserInfo](), followers: [UserInfo](), about: "", events: [EventItemModel]()),
+            participants: [UserInfo]()
+        ))
     }
 }

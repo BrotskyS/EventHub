@@ -9,22 +9,30 @@ import SwiftUI
 
 struct EventItemModel: Identifiable {
     var id: String
-    var imageUrl: String;
-    var title: String
-    var participants: Int;
-    var date: Date;
-    var eventStartTime: Date;
-    var eventEndTime: Date;
-    var locationTitle: String;
-    var location: String;
-    var organizer: String
+    var title: String;
     var description: String
+    var image: String;
+    var publicShare: Bool;
+    var date: Date;
+    var startTime: Date;
+    var endTime: Date;
+    var eventType: String;
+    var price: Int;
+    var locationTitle: String;
+    var locatioin: String
+    var organizer: UserInfo
+    var participants: [UserInfo]
 }
+
 
 struct UserInfo: Identifiable{
     var id: String
     var name: String;
-    var following: Int;
-    var followers: Int
+    var email: String;
+    var city: String;
+    var following: [UserInfo];
+    var followers: [UserInfo];
+    var about: String;
+    var events: [EventItemModel]
     
 }

@@ -9,15 +9,18 @@ import SwiftUI
 import Firebase
 
 class CreateNewEventModel: ObservableObject {
-    @Published var eventName = ""
+    @Published var eventTitle = ""
     @Published var eventDescription = ""
     @Published var eventImage = UIImage()
-    @Published var eventDate = Date()
+    @Published var date = Date()
+    @Published var startTime = Date()
+    @Published var endTime = Date()
     @Published var eventPublicShare = true
     @Published var eventPrice = ""
-    
-    
     @Published var showImageSheet = false
+    
+    let db = Firestore.firestore()
+    
     
     func compressImage(image: UIImage) -> UIImage {
         let resizeImage = eventImage.aspectFittedToHeight(200)
@@ -26,36 +29,25 @@ class CreateNewEventModel: ObservableObject {
         return resizeImage
     }
     
-    let storage = Storage.storage()
+    func uploadEvent(){
+        db.collection("events").addDocument(data: [
+            "title": eventTitle,
+            "description": eventDescription,
+            "image": "https://picsum.photos/218/131",
+            "publicShare": eventPublicShare,
+            "date": date,
+            "startTime": eventTitle,
+            "endTime": endTime,
+            "eventType": "sport",
+            "price": eventPrice,
+            "locationTitle": "streetName",
+            "locatioin": "locatioin",
+//            "organizer": UserInfo(id: "123", name: "123", following: 123, followers: 123),
+//            "participants": [UserInfo(id: "123", name: "123", following: 123, followers: 123)]
+            
+        ])
+    }
     
-    
-    func uploadImage(image: UIImage) {
-            // Create a storage reference
-            let storageRef = storage.reference().child("images/image.jpg")
-
-            // Resize the image to 200px with a custom extension
-            let resizedImage = image.aspectFittedToHeight(200)
-
-            // Convert the image into JPEG and compress the quality to reduce its size
-            let data = resizedImage.jpegData(compressionQuality: 0.2)
-
-            // Change the content type to jpg. If you don't, it'll be saved as application/octet-stream type
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpg"
-
-            // Upload the image
-            if let data = data {
-                storageRef.putData(data, metadata: metadata) { (metadata, error) in
-                    if let error = error {
-                        print("Error while uploading file: ", error)
-                    }
-
-                    if let metadata = metadata {
-                        print("Metadata: ", metadata)
-                    }
-                }
-            }
-        }
 }
     
 

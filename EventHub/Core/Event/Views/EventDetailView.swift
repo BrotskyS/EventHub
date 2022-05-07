@@ -30,7 +30,7 @@ struct EventDetailView: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text(event.date.formateDate(formatTemplate: "d MMMM YYYY"))
                             .fontWeight(.semibold)
-                        Text("\(event.date.formateDate(formatTemplate: "EEEE")), \(event.eventStartTime.formatted(date: .omitted, time: .shortened)) -  \(event.eventEndTime.formatted(date: .omitted, time: .shortened))")
+                        Text("\(event.date.formateDate(formatTemplate: "EEEE")), \(event.startTime.formatted(date: .omitted, time: .shortened)) -  \(event.endTime.formatted(date: .omitted, time: .shortened))")
                             .font(.subheadline)
                             .foregroundColor(.black.opacity(0.7))
                     }
@@ -76,7 +76,7 @@ struct EventDetailView: View {
                     
                     
                     VStack(alignment: .leading, spacing: 10){
-                        Text(event.organizer)
+                        Text(event.organizer.name)
                             .fontWeight(.semibold)
                         Text("Organizer")
                             .font(.subheadline)
@@ -191,7 +191,7 @@ struct EventDetailView: View {
     
     var participants: some View{
         HStack{
-            Text("+ \(event.participants) goals")
+            Text("+ \(event.participants.count) goals")
                 .fontWeight(.semibold)
                 .font(.callout)
                 .foregroundColor(Color("AccentColor"))
@@ -221,7 +221,22 @@ struct EventDetailView: View {
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            EventDetailView(event: EventItemModel(id: "123", imageUrl: "https://picsum.photos/218/131", title: "International Band Music Concert", participants: 20, date: Date(), eventStartTime: Date(), eventEndTime: Date(), locationTitle: "36 Guild Street London, UK ", location: "36 Guild Street London, UK ", organizer: "Sergiy", description: "Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase"))
+            EventDetailView(event: EventItemModel(
+                id: "123",
+                title: "test",
+                description: "asdasd",
+                image: "https://picsum.photos/218/131",
+                publicShare: true,
+                date: Date.now,
+                startTime: Date.now,
+                endTime: Date.now,
+                eventType: "Sport",
+                price: 200,
+                locationTitle: "Main street",
+                locatioin: "asdasd",
+                organizer: UserInfo(id: "", name: "", email: "", city: "", following: [UserInfo](), followers: [UserInfo](), about: "", events: [EventItemModel]()),
+                participants: [UserInfo]()
+            ))
         }
     }
 }

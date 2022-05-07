@@ -27,7 +27,7 @@ struct Tabs: View {
                     Image(systemName: "map")
                     Text("Map")
                 }
-            ProfileView()
+            ProfileView(isMyProfile: false)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Person")
