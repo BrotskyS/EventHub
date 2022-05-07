@@ -39,6 +39,25 @@ struct CreateNewEventDetail: View {
                 }
                 
                 
+                Section(header: Text("Add image")){
+                    Image(uiImage: model.eventImage)
+                        .resizable()
+                        .background(.black.opacity(0.2))
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 200)
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            model.showImageSheet = true
+                        }
+                }
+                .onChange(of: model.eventImage, perform: { value in
+                    model.eventImage = model.compressImage(image: model.eventImage)
+                })
+                .sheet(isPresented: $model.showImageSheet) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: $model.eventImage)
+                }
+                
+                
                 Section(header: Text("Privacy"), footer: Text("A publicly shared event is for everyone. A not publicly shared event is only visible by you and invited folowers")){
                     Toggle("Public Share", isOn: $model.eventPublicShare)
                 }
@@ -89,7 +108,7 @@ struct CreateNewEventDetail: View {
             .toolbar(content: {
                 ToolbarItem{
                     Button{
-                        
+                        model.uploadImage(image: model.eventImage)
                     } label: {
                         Text("Save")
                             .fontWeight(.bold)

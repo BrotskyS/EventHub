@@ -20,3 +20,11 @@ struct EventItemModel: Identifiable {
     var organizer: String
     var description: String
 }
+
+struct UserInfo: Identifiable{
+    var id: String
+    var name: String;
+    var following: Int;
+    var followers: Int
+    
+}

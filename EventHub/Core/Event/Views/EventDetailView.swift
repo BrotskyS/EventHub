@@ -109,9 +109,6 @@ struct EventDetailView: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .navigationBarHidden(true)
-//        .navigationTitle("Event Detail")
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea()
         .background(Color("Background"))
         .overlay(

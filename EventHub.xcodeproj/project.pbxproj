@@ -35,6 +35,11 @@
 		0D33AB92282597A300D34622 /* CreateNewEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33AB91282597A300D34622 /* CreateNewEventDetail.swift */; };
 		0D33AB94282598DE00D34622 /* CreateNewEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33AB93282598DE00D34622 /* CreateNewEventModel.swift */; };
 		0D33ABA02825B6FB00D34622 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33AB9F2825B6FB00D34622 /* ProfileView.swift */; };
+		0D33ABA22826A43900D34622 /* AnimatedBlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33ABA12826A43900D34622 /* AnimatedBlobView.swift */; };
+		0D33ABA42826A46500D34622 /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33ABA32826A46500D34622 /* HexagonView.swift */; };
+		0D33ABA62826A8AF00D34622 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0D33ABA52826A8AF00D34622 /* FirebaseStorage */; };
+		0D33ABA82826A99900D34622 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33ABA72826A99900D34622 /* ImagePicker.swift */; };
+		0D8CDF2B2826ADBB00E12370 /* ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CDF2A2826ADBB00E12370 /* ImageExtention.swift */; };
 		0DDDBD07281B00A000C49C90 /* AuthBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDDBD06281B00A000C49C90 /* AuthBackground.swift */; };
 		0DF2DB0F281C52E20027E8A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF2DB0E281C52E20027E8A6 /* FirebaseAuth */; };
 		0DF2DB11281C52E20027E8A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF2DB10281C52E20027E8A6 /* FirebaseDatabase */; };
@@ -75,6 +80,10 @@
 		0D33AB91282597A300D34622 /* CreateNewEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewEventDetail.swift; sourceTree = "<group>"; };
 		0D33AB93282598DE00D34622 /* CreateNewEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewEventModel.swift; sourceTree = "<group>"; };
 		0D33AB9F2825B6FB00D34622 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0D33ABA12826A43900D34622 /* AnimatedBlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBlobView.swift; sourceTree = "<group>"; };
+		0D33ABA32826A46500D34622 /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
+		0D33ABA72826A99900D34622 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		0D8CDF2A2826ADBB00E12370 /* ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtention.swift; sourceTree = "<group>"; };
 		0DDDBD06281B00A000C49C90 /* AuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackground.swift; sourceTree = "<group>"; };
 		0DF2DB19281C62FE0027E8A6 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		0DF2DB1D281C67FC0027E8A6 /* Explore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explore.swift; sourceTree = "<group>"; };
@@ -91,6 +100,7 @@
 				0DF2DB0F281C52E20027E8A6 /* FirebaseAuth in Frameworks */,
 				0DF2DB13281C52E20027E8A6 /* FirebaseFirestore in Frameworks */,
 				0DF2DB16281C5F130027E8A6 /* FirebaseAuthCombine-Community in Frameworks */,
+				0D33ABA62826A8AF00D34622 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +260,7 @@
 		0D22ED6F2819B22800CE6DD8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0D22ED792819B9B300CE6DD8 /* Components */,
 				0D33AB9C2825B6D400D34622 /* Profile */,
 				0D33AB972825AF1300D34622 /* Location */,
 				0D0606922824457D009DCF51 /* Extentions */,
@@ -261,7 +272,6 @@
 				0DF2DB1B281C67C60027E8A6 /* Explore */,
 				0D22ED712819B23100CE6DD8 /* Auth */,
 				0DDDBD08281B0CBB00C49C90 /* Models */,
-				0D22ED792819B9B300CE6DD8 /* Components */,
 				0D22ED762819B77700CE6DD8 /* Styles */,
 			);
 			path = Core;
@@ -281,6 +291,7 @@
 			children = (
 				0D22ED772819B78500CE6DD8 /* StrokeStyle.swift */,
 				0D06067928231FD0009DCF51 /* ColorExtention.swift */,
+				0D8CDF2A2826ADBB00E12370 /* ImageExtention.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -291,6 +302,9 @@
 				0D1351C9281ADE65009601AE /* Buttons */,
 				0D22ED7A2819B9C300CE6DD8 /* CustomField.swift */,
 				0DDDBD06281B00A000C49C90 /* AuthBackground.swift */,
+				0D33ABA12826A43900D34622 /* AnimatedBlobView.swift */,
+				0D33ABA32826A46500D34622 /* HexagonView.swift */,
+				0D33ABA72826A99900D34622 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -398,6 +412,7 @@
 				0DF2DB12281C52E20027E8A6 /* FirebaseFirestore */,
 				0DF2DB15281C5F130027E8A6 /* FirebaseAuthCombine-Community */,
 				0D06066F28230B18009DCF51 /* GoogleSignIn */,
+				0D33ABA52826A8AF00D34622 /* FirebaseStorage */,
 			);
 			productName = EventHub;
 			productReference = 0D22ED592819B1A700CE6DD8 /* EventHub.app */;
@@ -467,11 +482,14 @@
 				0D22ED752819B43300CE6DD8 /* SignInView.swift in Sources */,
 				0D0606822823E1BB009DCF51 /* Tabs.swift in Sources */,
 				0D22ED662819B1A900CE6DD8 /* Persistence.swift in Sources */,
+				0D33ABA22826A43900D34622 /* AnimatedBlobView.swift in Sources */,
 				0D06067C2823D0C1009DCF51 /* HomeModel.swift in Sources */,
+				0D33ABA42826A46500D34622 /* HexagonView.swift in Sources */,
 				0D06069128243B71009DCF51 /* EventDetailView.swift in Sources */,
 				0DDDBD07281B00A000C49C90 /* AuthBackground.swift in Sources */,
 				0D33ABA02825B6FB00D34622 /* ProfileView.swift in Sources */,
 				0D22ED5F2819B1A700CE6DD8 /* ContentView.swift in Sources */,
+				0D8CDF2B2826ADBB00E12370 /* ImageExtention.swift in Sources */,
 				0DF2DB1A281C62FE0027E8A6 /* AuthViewModel.swift in Sources */,
 				0D22ED7B2819B9C300CE6DD8 /* CustomField.swift in Sources */,
 				0DF2DB1E281C67FC0027E8A6 /* Explore.swift in Sources */,
@@ -479,6 +497,7 @@
 				0D0606842823E2E7009DCF51 /* EventItemView.swift in Sources */,
 				0D1351CF281AE9A3009601AE /* SignUpView.swift in Sources */,
 				0D06069428244596009DCF51 /* DateExtention.swift in Sources */,
+				0D33ABA82826A99900D34622 /* ImagePicker.swift in Sources */,
 				0D22ED782819B78500CE6DD8 /* StrokeStyle.swift in Sources */,
 				0D22ED692819B1A900CE6DD8 /* EventHub.xcdatamodeld in Sources */,
 				0D22ED732819B24000CE6DD8 /* InitView.swift in Sources */,
@@ -618,6 +637,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHub/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You can create photo for your event";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -649,6 +669,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventHub/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You can create photo for your event";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -715,6 +736,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D06066E28230B18009DCF51 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		0D33ABA52826A8AF00D34622 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DF2DB0D281C52E20027E8A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		0DF2DB0E281C52E20027E8A6 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
