@@ -50,7 +50,7 @@ class AuthViewModel: ObservableObject{
             self.userSesion = user
         }
     }
-    func register(withEmail email: String, password: String, fullname: String, username: String){
+    func register(withEmail email: String, password: String, fullname: String){
         if fullname == ""{
             
             errorMessage = "Full name can't be empty"
@@ -84,7 +84,7 @@ class AuthViewModel: ObservableObject{
             
             print("DEBUG: register user success\(String(describing: self.userSesion))")
             
-            let data = ["email": email, "username": username.lowercased(), "fullname": fullname, "uid": user.uid]
+            let data = ["email": email, "name": fullname]
             
             Firestore.firestore().collection("users")
                 .document(user.uid)

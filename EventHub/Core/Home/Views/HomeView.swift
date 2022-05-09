@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var firestoreModel: FirestoreManager
     @ObservedObject var homeModel = HomeModel()
     
     
@@ -38,16 +37,16 @@ struct HomeView: View {
                         .foregroundColor(.black.opacity(0.5))
                 }
                 .padding()
+                
                 ScrollView(.horizontal){
                     HStack(spacing: 15){
-                        ForEach(firestoreModel.upcomingEvents){ item in
+                        ForEach(homeModel.upcomingEvents){ item in
                             NavigationLink {
                                 EventDetailView(event: item)
                             } label: {
                                 EventItemView(event: item)
                             }
                             .buttonStyle(PlainButtonStyle())
-
                             
                         }
                     }
@@ -150,6 +149,5 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(FirestoreManager())
     }
 }

@@ -11,7 +11,6 @@ struct Tabs: View {
     var body: some View {
         TabView{
             HomeView()
-                .environmentObject(FirestoreManager())
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")

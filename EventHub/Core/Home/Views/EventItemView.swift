@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventItemView: View {
-    var event: EventItemModel
+    var event: Event
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
             ZStack(alignment: .top){
@@ -22,9 +22,9 @@ struct EventItemView: View {
                 
                 HStack(alignment: .top){
                     VStack{
-                        Text(event.startTime.formatted(.dateTime.day()))
+                        Text( event.date.formatted(.dateTime.day()))
                             .fontWeight(.bold)
-                        Text(event.endTime, format: .dateTime.month())
+                        Text(event.date, format: .dateTime.month())
                     }
                     .padding(10)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
@@ -44,9 +44,12 @@ struct EventItemView: View {
             
             HStack{
                 
-                Text("+ \(event.participants.count) goals")
-                    .fontWeight(.semibold)
-                    .font(.callout)
+//                if let participants = event.participants{
+//                    Text("+ \(participants.count) goals")
+//                        .fontWeight(.semibold)
+//                        .font(.callout)
+//                }
+             
 
             }
             HStack{
@@ -67,7 +70,7 @@ struct EventItemView: View {
 
 struct EventItemView_Previews: PreviewProvider {
     static var previews: some View {
-        EventItemView(event: EventItemModel(
+        EventItemView(event: Event(
             id: "123",
             title: "test",
             description: "asdasd",
@@ -79,9 +82,7 @@ struct EventItemView_Previews: PreviewProvider {
             eventType: "Sport",
             price: 200,
             locationTitle: "Main street",
-            locatioin: "asdasd",
-            organizer: UserInfo(id: "", name: "", email: "", city: "", following: [UserInfo](), followers: [UserInfo](), about: "", events: [EventItemModel]()),
-            participants: [UserInfo]()
+            locatioin: "asdasd"
         ))
     }
 }

@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
+import Foundation
+import FirebaseFirestoreSwift
 
-struct EventItemModel: Identifiable {
-    var id: String
+struct Event: Identifiable, Codable {
+    @DocumentID var id: String?
     var title: String;
     var description: String
     var image: String;
@@ -20,19 +23,14 @@ struct EventItemModel: Identifiable {
     var price: Int;
     var locationTitle: String;
     var locatioin: String
-    var organizer: UserInfo
-    var participants: [UserInfo]
+//    var organizer: UserInfo?
+//    var participants: [UserInfo]?
 }
 
 
-struct UserInfo: Identifiable{
-    var id: String
-    var name: String;
-    var email: String;
-    var city: String;
-    var following: [UserInfo];
-    var followers: [UserInfo];
-    var about: String;
-    var events: [EventItemModel]
-    
+struct Test: Identifiable, Codable {
+    @DocumentID var id: String?
+    var test: String
 }
+
+

@@ -42,7 +42,7 @@ class CreateNewEventModel: ObservableObject {
             "price": eventPrice,
             "locationTitle": "streetName",
             "locatioin": "locatioin",
-//            "organizer": UserInfo(id: "123", name: "123", following: 123, followers: 123),
+            "organizer": "/users/loprJ9zqigRLHwRB7OAdlZYXqYx2",
 //            "participants": [UserInfo(id: "123", name: "123", following: 123, followers: 123)]
             
         ])

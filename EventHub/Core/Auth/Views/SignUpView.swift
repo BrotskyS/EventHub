@@ -44,7 +44,7 @@ struct SignUpView: View {
             
             Button{
                 if password == confirmPassword{
-                    viewModel.register(withEmail: email, password: password, fullname: fullName, username: fullName)
+                    viewModel.register(withEmail: email, password: password, fullname: fullName)
                 }else{
                     withAnimation {
                         viewModel.isError = true

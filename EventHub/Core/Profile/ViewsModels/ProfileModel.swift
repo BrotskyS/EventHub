@@ -10,5 +10,6 @@ import SwiftUI
 class ProfileModel: ObservableObject {
     @Published var isPresenting = false
     @State var currentTab: Int = 1
+    
 }
 
