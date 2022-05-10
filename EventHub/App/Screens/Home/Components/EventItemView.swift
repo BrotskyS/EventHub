@@ -82,7 +82,8 @@ struct EventItemView_Previews: PreviewProvider {
             eventType: "Sport",
             price: 200,
             locationTitle: "Main street",
-            locatioin: "asdasd"
+            locatioin: "asdasd",
+            organizer: ""
         ))
     }
 }

@@ -40,7 +40,7 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal){
                     HStack(spacing: 15){
-                        ForEach(homeModel.upcomingEvents){ item in
+                        ForEach(homeModel.eventsService.event){ item in
                             NavigationLink {
                                 EventDetailView(event: item)
                             } label: {

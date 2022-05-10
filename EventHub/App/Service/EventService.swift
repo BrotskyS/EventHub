@@ -9,12 +9,13 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import Firebase
 import Combine
 
 class EventService: ObservableObject{
     private let store = Firestore.firestore()
     private let storage = Storage.storage()
-    
+    @Published var event = [Event]()
     
     func getUpcomingEvents(completion: @escaping([Event]) -> Void){
         store.collection("events")
@@ -26,16 +27,35 @@ class EventService: ObservableObject{
                 
                 
                 let events = querySnapshot?.documents.compactMap {document in
-                    //                    Map every document as a Story using data(as:decoder:). You can do this thanks to FirebaseFirestoreSwift,because Story conforms to Codable.
                     try? document.data(as: Event.self)
                 } ?? []
-                
-                print("eventsevents\(events.count)")
                 
                 DispatchQueue.main.async {
                     completion(events)
                 }
             }
+        
+    }
+    
+    func getEventsByUserUid(withUid uid: String, completion: @escaping([Event]) -> Void){
+        store.collection("events")
+            .whereField("organizer", isEqualTo: uid)
+            .addSnapshotListener{ querySnapshot, error in
+                if let error = error {
+                    print("Error getting stories: \(error.localizedDescription)")
+                    return
+                }
+                
+                
+                let events = querySnapshot?.documents.compactMap {document in
+                    try? document.data(as: Event.self)
+                } ?? []
+                
+                DispatchQueue.main.async {
+                    completion(events)
+                }
+            }
+        
         
     }
     func uploadImage(image: UIImage) {

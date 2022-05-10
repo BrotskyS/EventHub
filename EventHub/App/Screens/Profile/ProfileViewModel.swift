@@ -9,7 +9,7 @@ import SwiftUI
 
 class ProfileModel: ObservableObject {
     @Published var isPresenting = false
-    @State var currentTab: Int = 1
+    @Published var currentTab: Int = 0
     
 }
 

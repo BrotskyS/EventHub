@@ -9,15 +9,15 @@ import SwiftUI
 import Firebase
 
 class HomeModel: ObservableObject {
-    private var eventsService = EventService()
-    @Published var upcomingEvents = [Event]()
+    @Published var eventsService = EventService()
+//    @Published var upcomingEvents = [Event]()
     @Published var text: String = ""
     @Published var showSheet: Bool = false
     
     init(){
         eventsService.getUpcomingEvents { events in
-            self.upcomingEvents = events
+//            self.upcomingEvents = events
         }
-        
+
     }
 }

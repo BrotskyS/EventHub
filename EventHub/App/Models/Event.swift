@@ -23,14 +23,9 @@ struct Event: Identifiable, Codable {
     var price: Int;
     var locationTitle: String;
     var locatioin: String
-//    var organizer: UserInfo?
+    var organizer: String
 //    var participants: [UserInfo]?
 }
 
-
-struct Test: Identifiable, Codable {
-    @DocumentID var id: String?
-    var test: String
-}
 
 

@@ -10,14 +10,15 @@ import Firebase
 import GoogleSignIn
 
 class AuthViewModel: ObservableObject{
+    @Published var userInfo: Profile?
     @Published var userSesion: FirebaseAuth.User?
     @Published var isError = false
     @Published var errorMessage = ""
+    private var profileService = ProfileService()
     
     init(){
         self.userSesion = Auth.auth().currentUser
-        
-        print("DEBUG: usersesion init ")
+        getUser()
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -162,5 +163,13 @@ class AuthViewModel: ObservableObject{
         userSesion = nil
         GIDSignIn.sharedInstance.signOut()
         try? Auth.auth().signOut()
+    }
+    
+    func getUser(){
+        guard let uid = self.userSesion?.uid else {return}
+        print("UID\(uid)")
+        profileService.getProfileByUid(withUid: uid) { profile in
+            self.userInfo = profile
+        }
     }
 }
