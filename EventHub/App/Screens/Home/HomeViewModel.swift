@@ -10,13 +10,13 @@ import Firebase
 
 class HomeModel: ObservableObject {
     @Published var eventsService = EventService()
-//    @Published var upcomingEvents = [Event]()
+    @Published var upcomingEvents = [Event]()
     @Published var text: String = ""
     @Published var showSheet: Bool = false
     
     init(){
         eventsService.getUpcomingEvents { events in
-//            self.upcomingEvents = events
+            self.upcomingEvents = events
         }
 
     }

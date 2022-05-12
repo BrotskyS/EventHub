@@ -15,22 +15,26 @@ struct Tabs: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                .tag(1)
             Text("calendar")
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Events")
                 }
+                .tag(2)
             
             Text("calendar")
                 .tabItem {
                     Image(systemName: "map")
                     Text("Map")
                 }
-            ProfileView(isMyProfile: false)
+                .tag(3)
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Person")
                 }
+                .tag(4)
         }
         
     }

@@ -59,8 +59,6 @@ struct HomeView: View {
         
             Spacer()
         }
-        
-        .background(Color("Background"))
         .navigationBarHidden(true)
         .ignoresSafeArea()
     }

@@ -14,6 +14,6 @@ struct Profile: Identifiable, Codable{
     var email: String;
     var city: String;
     var about: String;
-    var events: [Event]
+    var events: [String]
     
 }

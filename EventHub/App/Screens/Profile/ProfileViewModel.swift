@@ -1,15 +1,12 @@
 //
-//  ProfileModel.swift
+//  ProfileViewModel.swift
 //  EventHub
 //
-//  Created by Sergiy Brotsky on 07.05.2022.
+//  Created by Sergiy Brotsky on 12.05.2022.
 //
 
 import SwiftUI
 
-class ProfileModel: ObservableObject {
-    @Published var isPresenting = false
-    @Published var currentTab: Int = 0
-    
+class ProfileViewModel: ObservableObject{
+    @Published var isDarkTheme = false
 }
-

@@ -11,6 +11,7 @@ import Firebase
 @main
 struct EventHubApp: App {
     @StateObject var viewModel = AuthViewModel()
+    @AppStorage("isDarkMode") private var isDarkMode = false
     init(){
         FirebaseApp.configure()
     }
@@ -21,6 +22,8 @@ struct EventHubApp: App {
                 ContentView()
             }
             .environmentObject(viewModel)
+            .preferredColorScheme(isDarkMode ? .dark : .light)
         }
+        
     }
 }

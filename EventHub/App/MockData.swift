@@ -7,4 +7,5 @@
 
 import SwiftUI
 
-var UserInfoMock = Profile(id: "", name: "", email: "", city: "Lviv, Ukraine", about: "", events: [Event]())
+let UserInfoMock = Profile(name: "Sergiy Brotsky", email: "sergiypik.work@gmail.com", city: "Lviv, Ukraine", about: "", events: [String]())
+let EventMockData = Event(title: "Main event", description: "description", image: "https://picsum.photos/218/131", publicShare: true, date: Date.now, startTime: Date.now, endTime: Date.now, eventType: "sport", price: 123, locationTitle: "Lviv", locatioin: "Lviv", organizer: "Brotsky")
