@@ -41,6 +41,9 @@
 		0D33ABA82826A99900D34622 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33ABA72826A99900D34622 /* ImagePicker.swift */; };
 		0D3CD700282DA51100766D59 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CD6FF282DA51100766D59 /* ProfileView.swift */; };
 		0D3CD702282DA51F00766D59 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CD701282DA51F00766D59 /* ProfileViewModel.swift */; };
+		0D3CD705282E66C700766D59 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CD704282E66C700766D59 /* EditProfileView.swift */; };
+		0D3CD707282E66D500766D59 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CD706282E66D500766D59 /* EditProfileViewModel.swift */; };
+		0D3CD709282E683C00766D59 /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CD708282E683B00766D59 /* TextFieldStyle.swift */; };
 		0D8CDF2B2826ADBB00E12370 /* ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CDF2A2826ADBB00E12370 /* ImageExtention.swift */; };
 		0D8CDF2D2826EB3A00E12370 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CDF2C2826EB3A00E12370 /* ProfileButton.swift */; };
 		0D8CDF312827FE6B00E12370 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CDF302827FE6B00E12370 /* MockData.swift */; };
@@ -92,6 +95,9 @@
 		0D33ABA72826A99900D34622 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0D3CD6FF282DA51100766D59 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0D3CD701282DA51F00766D59 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		0D3CD704282E66C700766D59 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		0D3CD706282E66D500766D59 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		0D3CD708282E683B00766D59 /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		0D8CDF2A2826ADBB00E12370 /* ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtention.swift; sourceTree = "<group>"; };
 		0D8CDF2C2826EB3A00E12370 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		0D8CDF302827FE6B00E12370 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				0D22ED772819B78500CE6DD8 /* StrokeStyle.swift */,
+				0D3CD708282E683B00766D59 /* TextFieldStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 		0D272936282AE05300D76429 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0D3CD703282E66B900766D59 /* EditProfile */,
 				0D3CD6FE282DA50400766D59 /* Profile */,
 				0D272939282AE26C00D76429 /* NewEvent */,
 				0D272938282AE25200D76429 /* EventDetail */,
@@ -298,6 +306,15 @@
 				0D3CD701282DA51F00766D59 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		0D3CD703282E66B900766D59 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				0D3CD704282E66C700766D59 /* EditProfileView.swift */,
+				0D3CD706282E66D500766D59 /* EditProfileViewModel.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		0DC959CE28297DC700B3989E /* Service */ = {
@@ -457,11 +474,14 @@
 				0D1351CF281AE9A3009601AE /* SignUpView.swift in Sources */,
 				0D06069428244596009DCF51 /* DateExtention.swift in Sources */,
 				0D3CD702282DA51F00766D59 /* ProfileViewModel.swift in Sources */,
+				0D3CD707282E66D500766D59 /* EditProfileViewModel.swift in Sources */,
 				0D33ABA82826A99900D34622 /* ImagePicker.swift in Sources */,
 				0D22ED782819B78500CE6DD8 /* StrokeStyle.swift in Sources */,
 				0D3CD700282DA51100766D59 /* ProfileView.swift in Sources */,
 				0D22ED692819B1A900CE6DD8 /* EventHub.xcdatamodeld in Sources */,
 				0D22ED732819B24000CE6DD8 /* InitView.swift in Sources */,
+				0D3CD709282E683C00766D59 /* TextFieldStyle.swift in Sources */,
+				0D3CD705282E66C700766D59 /* EditProfileView.swift in Sources */,
 				0D272934282A7C7F00D76429 /* ProfileService.swift in Sources */,
 				0D060676282310B7009DCF51 /* HomeView.swift in Sources */,
 				0D06067828231E01009DCF51 /* CategoriesModel.swift in Sources */,

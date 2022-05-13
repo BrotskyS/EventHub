@@ -44,7 +44,7 @@ struct ProfileView: View {
                 .frame(maxWidth: .infinity)
             }
             Section{
-                NavigationLink {HomeView()} label: {
+                NavigationLink {EditProfileView()} label: {
                     Label("Edit Profile", systemImage: "person")
                 }
                 NavigationLink {HomeView()} label: {
