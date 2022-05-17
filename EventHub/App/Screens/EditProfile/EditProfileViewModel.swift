@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Foundation
+import MapKit
 
 struct Country: Identifiable, Hashable {
     let id: String
@@ -17,9 +19,14 @@ class EditProfileViewModel: ObservableObject{
     @Published var lastName: String = ""
     @Published var birtDate: Date = Date.now
     @Published var email: String = ""
+    @Published var eventImage = UIImage()
+    @Published var showImageSheet = false
+    @Published var showLocationPicker = false
     
-    let countries = Locale.isoRegionCodes.compactMap{
-            Country(id: $0, name: Locale.current.localizedString(forRegionCode: $0)!) }
+    private let locale = Locale.current
+ 
+    
+    init(){
         
-        @Published var selectedCountry: Country?
+    }
 }

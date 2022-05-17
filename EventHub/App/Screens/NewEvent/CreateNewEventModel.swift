@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 class CreateNewEventModel: ObservableObject {
-    @Published var eventTitle = ""
+    @Published var eventName = ""
     @Published var eventDescription = ""
     @Published var eventImage = UIImage()
     @Published var date = Date()
@@ -17,6 +17,7 @@ class CreateNewEventModel: ObservableObject {
     @Published var endTime = Date()
     @Published var eventPublicShare = true
     @Published var eventPrice = ""
+    @Published var locationTitle = ""
     @Published var showImageSheet = false
     
     let db = Firestore.firestore()
@@ -31,12 +32,12 @@ class CreateNewEventModel: ObservableObject {
     
     func uploadEvent(){
         db.collection("events").addDocument(data: [
-            "title": eventTitle,
+            "name": eventName,
             "description": eventDescription,
             "image": "https://picsum.photos/218/131",
             "publicShare": eventPublicShare,
             "date": date,
-            "startTime": eventTitle,
+            "startTime": startTime,
             "endTime": endTime,
             "eventType": "sport",
             "price": eventPrice,

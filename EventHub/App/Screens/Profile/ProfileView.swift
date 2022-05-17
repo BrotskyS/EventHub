@@ -12,91 +12,93 @@ struct ProfileView: View {
     var profile = UserInfoMock
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        Form{
-            Section {
-                VStack{
-                        AsyncImage(url: URL(string: "https://picsum.photos/200"), transaction: .init(animation: .easeOut)) { phase in
-                            switch phase {
-                            case .empty:
-                                Color.white
-                            case .success(let image):
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .transition(.scale(scale: 0.5, anchor: .center))
-                            case .failure(_):
-                                Color.gray
-                            @unknown default:
-                                Color.gray
+        NavigationView {
+            Form{
+                Section {
+                    VStack{
+                            AsyncImage(url: URL(string: "https://picsum.photos/200"), transaction: .init(animation: .easeOut)) { phase in
+                                switch phase {
+                                case .empty:
+                                    Color.white
+                                case .success(let image):
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .transition(.scale(scale: 0.5, anchor: .center))
+                                case .failure(_):
+                                    Color.gray
+                                @unknown default:
+                                    Color.gray
+                                }
                             }
-                        }
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                        .foregroundColor(Color("AccentColor"))
-                        
-                        Text(profile.name)
-                            .fontWeight(.bold)
-                            .font(.title3)
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                            .foregroundColor(Color("AccentColor"))
                             
-                        
-                        Text(profile.email)
-                }
-                .padding(.vertical)
-                .frame(maxWidth: .infinity)
-            }
-            Section{
-                NavigationLink {EditProfileView()} label: {
-                    Label("Edit Profile", systemImage: "person")
-                }
-                NavigationLink {HomeView()} label: {
-                    Label("Natification", systemImage: "bell")
-                }
-                NavigationLink {HomeView()} label: {
-                    Label{
-                        Text("Language")
-                               .font(.body)
-                               
-                        Spacer()
-                           Text("English")
-                               .font(.subheadline)
-                               .foregroundColor(.secondary)
-                    } icon: {
-                        Image(systemName: "globe")
-                    }
-                }
-                
-                Toggle(isOn: $isDarkMode) {
-                        Image(systemName: "eyedropper")
-                            .padding(.horizontal, 3)
-                        Text("Dark Theme")
-                        
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                            Text(profile.name)
+                                .fontWeight(.bold)
+                                .font(.title3)
                                 
-                
-                NavigationLink {HomeView()} label: {
-                    Label("Privacy Policy", systemImage: "lock")
+                            
+                            Text(profile.email)
+                    }
+                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
                 }
-                NavigationLink {HomeView()} label: {
-                    Label("Help and Support", systemImage: "questionmark.circle")
-                }
-                NavigationLink {HomeView()} label: {
-                    Label("Contact Us", systemImage: "text.bubble")
-                }
-            }
-            .foregroundColor(colorScheme == .dark ? .white  : .black)
-            
-            
-            Section{
-                Button{
+                Section{
+                    NavigationLink {EditProfileView()} label: {
+                        Label("Edit Profile", systemImage: "person")
+                    }
+                    NavigationLink {HomeView()} label: {
+                        Label("Natification", systemImage: "bell")
+                    }
+                    NavigationLink {HomeView()} label: {
+                        Label{
+                            Text("Language")
+                                   .font(.body)
+                                   
+                            Spacer()
+                               Text("English")
+                                   .font(.subheadline)
+                                   .foregroundColor(.secondary)
+                        } icon: {
+                            Image(systemName: "globe")
+                        }
+                    }
                     
-                }label: {
-                    Label("Logout", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                    Toggle(isOn: $isDarkMode) {
+                            Image(systemName: "eyedropper")
+                                .padding(.horizontal, 3)
+                            Text("Dark Theme")
+                            
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                                    
+                    
+                    NavigationLink {HomeView()} label: {
+                        Label("Privacy Policy", systemImage: "lock")
+                    }
+                    NavigationLink {HomeView()} label: {
+                        Label("Help and Support", systemImage: "questionmark.circle")
+                    }
+                    NavigationLink {HomeView()} label: {
+                        Label("Contact Us", systemImage: "text.bubble")
+                    }
                 }
+                .foregroundColor(colorScheme == .dark ? .white  : .black)
+                
+                
+                Section{
+                    Button{
+                        
+                    }label: {
+                        Label("Logout", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                    }
+                }
+                .foregroundColor(.red)
+                .navigationTitle("Profile")
+               
+                
             }
-            .foregroundColor(.red)
-            .navigationTitle("Profile")
-           
-            
         }
       
         

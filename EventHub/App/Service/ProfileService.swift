@@ -30,6 +30,5 @@ class ProfileService: ObservableObject{
                 
                 completion(user)
             }
-        
     }
 }

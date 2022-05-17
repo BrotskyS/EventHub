@@ -12,55 +12,57 @@ struct HomeView: View {
     
     
     var body: some View {
-        VStack{
+        NavigationView {
             VStack{
-                topHeder
-                searchHeader
-            }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 50)
-            .frame(maxWidth: .infinity)
-            .background(Color("AccentColor"))
-            .foregroundColor(.white)
-            .cornerRadiusCustom(40, corners: [.bottomLeft, .bottomRight])
-            .overlay(categories)
-        
-            Group{
-                HStack{
-                    Text("Upcoming Events")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Text("See all")
-                        .foregroundColor(.black.opacity(0.5))
-                    Image(systemName: "arrowtriangle.forward.fill")
-                        .foregroundColor(.black.opacity(0.5))
+                VStack{
+                    topHeder
+                    searchHeader
                 }
-                .padding()
-                
-                ScrollView(.horizontal){
-                    HStack(spacing: 15){
-                        ForEach(homeModel.eventsService.event){ item in
-                            NavigationLink {
-                                EventDetailView(event: item)
-                            } label: {
-                                EventItemView(event: item)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                        }
-                    }
-                    .padding(.horizontal)
-                }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 50)
+                .frame(maxWidth: .infinity)
+                .background(Color("AccentColor"))
+                .foregroundColor(.white)
+                .cornerRadiusCustom(40, corners: [.bottomLeft, .bottomRight])
+                .overlay(categories)
             
+                Group{
+                    HStack{
+                        Text("Upcoming Events")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text("See all")
+                            .foregroundColor(.black.opacity(0.5))
+                        Image(systemName: "arrowtriangle.forward.fill")
+                            .foregroundColor(.black.opacity(0.5))
+                    }
+                    .padding()
+                    
+                    ScrollView(.horizontal){
+                        HStack(spacing: 15){
+                            ForEach(homeModel.eventsService.event){ item in
+                                NavigationLink {
+                                    EventDetailView(event: item)
+                                } label: {
+                                    EventItemView(event: item)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                
+                }
+               
+              
+            
+                Spacer()
             }
-           
-          
-        
-            Spacer()
-        }
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
         .ignoresSafeArea()
+        }
     }
     var topHeder: some View{
         HStack{
