@@ -13,56 +13,59 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                VStack{
-                    topHeder
-                    searchHeader
-                }
-                .padding(.horizontal, 24)
-                .padding(.vertical, 50)
-                .frame(maxWidth: .infinity)
-                .background(Color("AccentColor"))
-                .foregroundColor(.white)
-                .cornerRadiusCustom(40, corners: [.bottomLeft, .bottomRight])
-                .overlay(categories)
-            
-                Group{
+            ScrollView{
+                HStack{
                     HStack{
-                        Text("Upcoming Events")
-                            .font(.title2)
+                        Text("Lviv")
                             .fontWeight(.semibold)
-                        Spacer()
-                        Text("See all")
-                            .foregroundColor(.black.opacity(0.5))
-                        Image(systemName: "arrowtriangle.forward.fill")
-                            .foregroundColor(.black.opacity(0.5))
+                            .font(.headline)
+                        Image(systemName: "chevron.down")
                     }
                     .padding()
-                    
-                    ScrollView(.horizontal){
-                        HStack(spacing: 15){
-                            ForEach(homeModel.eventsService.event){ item in
-                                NavigationLink {
-                                    EventDetailView(event: item)
-                                } label: {
-                                    EventItemView(event: item)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                
+                    .background(.gray.opacity(0.3), in: RoundedRectangle(cornerRadius: 20))
+                    Spacer()
+                    Image(systemName: "magnifyingglass")
                 }
-               
-              
+                .padding()
+                    Group{
+                        HStack{
+                            Text("Upcoming Events")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                            Spacer()
+                            Text("See all")
+                                .foregroundColor(.black.opacity(0.5))
+                            Image(systemName: "arrowtriangle.forward.fill")
+                                .foregroundColor(.black.opacity(0.5))
+                        }
+                        .padding()
+                        
+                        ScrollView(.horizontal){
+                            HStack(spacing: 15){
+                                ForEach(homeModel.upcomingEvents){ item in
+                                    NavigationLink {
+                                        EventDetailView(event: item)
+                                    } label: {
+                                        EventItemView(event: item)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                    
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                    
+                    }
+                   
+                  
+                
+                    Spacer()
+                }
             
-                Spacer()
-            }
             .navigationBarHidden(true)
-        .ignoresSafeArea()
+            
         }
+
     }
     var topHeder: some View{
         HStack{

@@ -12,34 +12,34 @@ struct ProfileView: View {
     var profile = UserInfoMock
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        NavigationView {
+        NavigationView{
             Form{
                 Section {
                     VStack{
-                            AsyncImage(url: URL(string: "https://picsum.photos/200"), transaction: .init(animation: .easeOut)) { phase in
-                                switch phase {
-                                case .empty:
-                                    Color.white
-                                case .success(let image):
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .transition(.scale(scale: 0.5, anchor: .center))
-                                case .failure(_):
-                                    Color.gray
-                                @unknown default:
-                                    Color.gray
-                                }
+                        AsyncImage(url: URL(string: "https://picsum.photos/200"), transaction: .init(animation: .easeOut)) { phase in
+                            switch phase {
+                            case .empty:
+                                Color.white
+                            case .success(let image):
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .transition(.scale(scale: 0.5, anchor: .center))
+                            case .failure(_):
+                                Color.gray
+                            @unknown default:
+                                Color.gray
                             }
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .foregroundColor(Color("AccentColor"))
-                            
-                            Text(profile.name)
-                                .fontWeight(.bold)
-                                .font(.title3)
-                                
-                            
-                            Text(profile.email)
+                        }
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .foregroundColor(Color("AccentColor"))
+                        
+                        Text(profile.name)
+                            .fontWeight(.bold)
+                            .font(.title3)
+                        
+                        
+                        Text(profile.email)
                     }
                     .padding(.vertical)
                     .frame(maxWidth: .infinity)
@@ -54,25 +54,25 @@ struct ProfileView: View {
                     NavigationLink {HomeView()} label: {
                         Label{
                             Text("Language")
-                                   .font(.body)
-                                   
+                                .font(.body)
+                            
                             Spacer()
-                               Text("English")
-                                   .font(.subheadline)
-                                   .foregroundColor(.secondary)
+                            Text("English")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
                         } icon: {
                             Image(systemName: "globe")
                         }
                     }
                     
                     Toggle(isOn: $isDarkMode) {
-                            Image(systemName: "eyedropper")
-                                .padding(.horizontal, 3)
-                            Text("Dark Theme")
-                            
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                                    
+                        Image(systemName: "eyedropper")
+                            .padding(.horizontal, 3)
+                        Text("Dark Theme")
+                        
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
                     
                     NavigationLink {HomeView()} label: {
                         Label("Privacy Policy", systemImage: "lock")
@@ -95,12 +95,17 @@ struct ProfileView: View {
                     }
                 }
                 .foregroundColor(.red)
-                .navigationTitle("Profile")
-               
+                .navigationBarItems(
+                    trailing:
+                        NavigationLink(destination: CreateNewEventView(), label: {
+                            Image(systemName: "plus")
+                        })
+                )
+                
                 
             }
+            
         }
-      
         
     }
 }

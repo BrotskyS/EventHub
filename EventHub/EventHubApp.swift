@@ -18,9 +18,9 @@ struct EventHubApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            NavigationView {
+            
                 ContentView()
-//            }
+            
             .environmentObject(viewModel)
             .preferredColorScheme(isDarkMode ? .dark : .light)
         }

@@ -108,7 +108,7 @@ struct EventDetailView: View {
             .padding(.horizontal, 24)
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .navigationBarHidden(true)
+        .navigationTitle("Event Detail")
         .ignoresSafeArea()
         .background(Color("Background"))
         .overlay(
@@ -152,31 +152,6 @@ struct EventDetailView: View {
                 .offset(y: scrollY > 0 ? -scrollY : 0)
                 .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
                 .blur(radius: scrollY / 10)
-                .overlay(
-                    HStack{
-                      
-                        Button{
-                            presentationMode.wrappedValue.dismiss()
-                        }label: {
-                            Image(systemName: "arrow.left")
-                                .font(.title2)
-                            
-                            Text("Event Detail")
-                                .fontWeight(.semibold)
-                                .font(.title2)
-                        }
-                        
-                        Spacer()
-                        
-                        Image(systemName: "bookmark.fill")
-                            .padding(10)
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
-                    }
-                    .offset(y: scrollY > 0 ? -scrollY / 1.1 : 0)
-                    .padding(.top, 30)
-                    .padding()
-                    .frame(maxHeight: .infinity, alignment: .top)
-                )
              
                 
                 .foregroundColor(.white)

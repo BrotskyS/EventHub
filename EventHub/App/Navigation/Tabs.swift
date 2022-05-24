@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+enum TabsName: String {
+    case home
+    case calendar
+    case notification
+    case profile
+}
+
 struct Tabs: View {
-    @State var isPresenting = false
-    @State private var selectedItem = 1
-    @State private var oldSelectedItem = 1
+    @State private var selectedItem: TabsName = .home
     var body: some View {
         TabView(selection:$selectedItem){
             HomeView()
@@ -18,24 +23,16 @@ struct Tabs: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-                .tag(1)
+                .tag(TabsName.home)
             Text("calendar")
                 
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Events")
                 }
-                .tag(2)
+                .tag(TabsName.calendar)
             
-            
-            CreateNewEventView()
-                .tabItem {
-                    Image(systemName: "plus")
-
-                }
-            
-            
-                .tag(3)
+        
             
             Text("calendar")
                 
@@ -43,27 +40,14 @@ struct Tabs: View {
                     Image(systemName: "map")
                     Text("Map")
                 }
-                .tag(4)
+                .tag(TabsName.notification)
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Person")
                 }
-                .tag(5)
+                .tag(TabsName.profile)
         }
-        .onChange(of: selectedItem) {
-                if selectedItem == 3 {
-                self.isPresenting = true
-                } else {
-                    self.oldSelectedItem = $0
-                }
-            }
-        .sheet(isPresented: $isPresenting, onDismiss: {
-                self.selectedItem = self.oldSelectedItem
-            }) {
-                CreateNewEventView()
-        }
-        
     }
 }
 

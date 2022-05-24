@@ -7,11 +7,11 @@
 
 import SwiftUI
 import MapKit
-
+import MapItemPicker
 
 struct CreateNewEventView: View {
     @ObservedObject var model = CreateNewEventModel()
-    
+    @State private var showingPicker = false
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         
@@ -96,6 +96,15 @@ struct CreateNewEventView: View {
                     
                     Section(footer: Text("Specify the location of the event. It will be easier for users to understand where the event takes place")){
                         TextField("Place name", text: $model.locationTitle)
+                        
+                        Button("Choose location") {
+                                  showingPicker = true
+                              }
+                              .mapItemPicker(isPresented: $showingPicker) { item in
+                                  if let name = item {
+                                      print("Selected \(name)")
+                                  }
+                              }
                     }
                   
                         
